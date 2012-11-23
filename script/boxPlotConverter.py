@@ -28,13 +28,15 @@ def main():
     line = sys.stdin.readline()
     while line != "":
         tempData = line.strip().split(DEL)
-        x_data = tempData[x_col_num-1]
-        y_data = tempData[y_col_num-1]
-
-        if x_data not in data.keys():
-            data[x_data] = [y_data]
-        else:
-            data[x_data].append(y_data)
+        x_data = float(tempData[x_col_num-1])
+        y_data = float(tempData[y_col_num-1])
+        
+        # eliminate 0 data
+        if y_data != 0.0:
+            if x_data not in data.keys():
+                data[x_data] = [float(y_data)]
+            else:
+                data[x_data].append(float(y_data))
 
         line = sys.stdin.readline()
 
@@ -47,12 +49,12 @@ def main():
         first_quarter = cdf_data[int(cdf_data_len*0.25)]
         third_quarter = cdf_data[int(cdf_data_len*0.75)]
         median = cdf_data[int(cdf_data_len*0.5)]
-        print eachData + DEL + \
-              min_data + DEL + \
-              first_quarter + DEL + \
-              median + DEL + \
-              third_quarter + DEL + \
-              max_data
+        print str(eachData) + DEL + \
+              str(min_data) + DEL + \
+              str(first_quarter) + DEL + \
+              str(median) + DEL + \
+              str(third_quarter) + DEL + \
+              str(max_data)
 
 if __name__ == "__main__":
     main()
