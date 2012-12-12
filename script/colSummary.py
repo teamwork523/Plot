@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys
+import sys, math
 
 def Usage():
     print sys.argv[0] + " col_num header < filepath"
@@ -31,13 +31,18 @@ def main():
     
     sortData = sorted(data)
     dataLen = len(data)
+    mean = total/dataLen
+    diff_sum = 0.0
+    for ele in data:
+        diff_sum += (ele-mean)*(ele-mean)
     print "Data Summary:"
-    print "Mean: " + str(total/dataLen)
+    print "Mean: " + str(mean)
     print "Min: " + str(sortData[0])
     print "Q1: " + str(sortData[int(dataLen*0.25)])
     print "Median: " + str(sortData[int(dataLen*0.5)])
     print "Q3: " + str(sortData[int(dataLen*0.75)])
     print "Max: " + str(sortData[dataLen-1])
-
+    print "Std: " + str(sqrt(diff_sum/dataLen))
+    
 if __name__ == "__main__":
     main()

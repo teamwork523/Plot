@@ -1,0 +1,10 @@
+
+set autoscale
+set xtic auto                          # set xtics automatically
+set ytic auto                          # set ytics automatically
+set title 'LTE SNR vs Throughput'
+set xlabel "LTE_SNR(dB)"
+set ylabel "Throughput(kbps)"
+
+plot "lte_result.txt" using 13:3 with points  lt 4 title columnheader
+     
